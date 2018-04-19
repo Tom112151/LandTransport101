@@ -15,6 +15,7 @@ library(jsonlite)
 #UI
 #Sets up descriptions
 ui <- fluidPage( 
+   # includeCSS("styles.css"),
   dashboardHeader(title = "Airplane tracker in 1 April 18:00 pm"),
   sliderInput("planeCount","Amount of Planes",1,8,2),
   leafletOutput("mymap") 
