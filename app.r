@@ -4,6 +4,7 @@
 #install.packages("shinyjs)
 #install.packages("leaflet")
 #install.packages("jsonlite")
+#install.packages("shinydashboard")
 
 #load the necessary libraries
 library(shiny)
@@ -11,6 +12,7 @@ library(plotly)
 library(shinyjs)
 library(leaflet)
 library(jsonlite)
+library(shinydashboard)
 
 #UI
 #Sets up descriptions
