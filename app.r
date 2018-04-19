@@ -1,9 +1,12 @@
+#Still currently in testing
+
 #install necessary libraries if not currently installed yet
 #install.packages("shiny")
 #install.packages("shinyjs)
 #install.packages("leaflet")
 #install.packages("jsonlite")
 #install.packages("shinydashboard")
+#install.packages("rjson")
 
 #load the necessary libraries
 library(shiny)
@@ -25,14 +28,10 @@ ui <- fluidPage(
 server <- function(input, output, session) 
 {
   library(jsonlite)
-  airPlanes = read.csv("AircraftList1April1800.csv")
+  jsLandTransport = fromJSON("http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=33.433638&lng=-112.008113&fDstL=0&fDstU=100")
+  landTransport <- as.data.frame(jsLandTransport)
+  landTransport
    
-  output$mymap <- renderLeaflet({
-    leaflet(data = airPlanes[1:input$planeCount,]) %>% addTiles() %>%
-      addMarkers(~Longtitude, ~Latitude, popup = ~as.character(Model), label=~as.character(Airlines))
-   
-  landTransport = fromJSON("http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=33.433638&lng=-112.008113&fDstL=0&fDstU=100")
-  
   values <- reactiveValues()
   
   observe({
@@ -44,3 +43,8 @@ server <- function(input, output, session)
 
 }
 shinyApp(ui, server)
+#airPlanes = read.csv("AircraftList1April1800.csv")
+   
+  #output$mymap <- renderLeaflet({
+   # leaflet(data = airPlanes[1:input$planeCount,]) %>% addTiles() %>%
+     # addMarkers(~Longtitude, ~Latitude, popup = ~as.character(Model), label=~as.character(Airlines))
