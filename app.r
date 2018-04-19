@@ -30,7 +30,7 @@ server <- function(input, output, session)
   library(jsonlite)
   jsLandTransport = fromJSON("http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=33.433638&lng=-112.008113&fDstL=0&fDstU=100")
   landTransport <- as.data.frame(jsLandTransport)
-  landTransport
+  jsLandTransport
    
   values <- reactiveValues()
   
