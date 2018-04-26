@@ -52,6 +52,8 @@ ui <- fluidPage
           (
               #box(leafletOutput("map"))
           )
+        )
+      )
     )
    )
 )
