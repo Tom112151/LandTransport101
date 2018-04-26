@@ -47,7 +47,7 @@ server <- function(input, output, session)
   landTransport <- as.data.frame(jsLandTransport)
   
   #Displaying the content of landTransport
-  landTransport
+  #landTransport
   
   #Yes
   values <- reactiveValues()
@@ -55,7 +55,7 @@ server <- function(input, output, session)
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
    leaflet(data = landTransport[1:input$count,]) %>% addTiles() %>%
-     addMarkers(~items.longtitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
+     addMarkers(~longtitude, ~latitude, popup = ~as.character(heading), label=~as.character(id))
   
   #Observes the API and make changes
   observe({
