@@ -41,14 +41,14 @@ ui <- fluidPage(
       fluidrow(
         box(plotOutput("map")),
         box(sliderInput("count", "Amount", 1, 1500, 100)),
-        box(leafletOutput("map")
+        box(leafletOutput("map"))
       )
     )
 )
 
 #Server---------------------------------------------------------------------------------------------------------------------------------
 #
-server <- function(input, output, session) 
+server <- function(input, output) 
 {
   #jsonlite loaded again to make sure
   library(jsonlite)
