@@ -44,7 +44,7 @@ server <- function(input, output, session)
   #a data frame, the website json that is used for this is written below (The parameter for the website cannot be changed unless you
   #make adjustment to the code)
   jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-  dataFrame <- as.data.frame(jsLandTransport)
+  dataFrame <- as.data.frame(jsonFile)
   
   #We will only need some of the data from the frame, so we put that in  a new frame
   newDataFrame <- dataFrame[c(3,4,6,7)]
