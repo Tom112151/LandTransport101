@@ -31,8 +31,6 @@ shinyUI
           (
             title = "Heh",
             collapsible = TRUE,
-            width = "100%",
-            height = "100%",
             leafletOutput("map")
           ),
           box
