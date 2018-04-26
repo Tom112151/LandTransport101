@@ -29,7 +29,7 @@ shinyUI
           tabName = "Da other wei",
           fluidRow
           (
-            box(leafletOuput("map"))
+            box(plotOuput("map"))
           )
         )
       )
