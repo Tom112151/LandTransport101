@@ -43,14 +43,9 @@ server <- function(input, output, session)
   #jsLandTransport will read from a json in a website and then landTransport will take jsLandTransport's information and put it into
   #a data frame, the website json that is used for this is written below (The parameter for the website cannot be changed unless you
   #make adjustment to the code)
-   jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-  dataFrame <- as.data.frame(jsonFile)
-  newDataFrame <- dataFrame[c(3,4,6,7)]
-	
+  jsLandTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
+  landTransport <- as.data.frame(jsLandTransport)
   
-  
-  redMarker <- makeIcon(iconUrl = "https://www.iconsdb.com/icons/download/red/map-marker-2-16.png")
-  greenMarker <- makeIcon(iconUrl = "https://www.iconsdb.com/icons/download/green/map-marker-2-16.png")
   #Displaying the content of landTransport
   #landTransport
   
@@ -59,14 +54,13 @@ server <- function(input, output, session)
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
-   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
-      addMarkers(~items.longitude, ~items.latitude, icon=greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id)) 
+   leaflet(data = landTransport[1:input$count,]) %>% addTiles() %>%
+     addMarkers(~longtitude, ~latitude, popup = ~as.character(heading), label=~as.character(id))
   
   #Observes the API and make changes
   observe({
     invalidateLater(1000, session)
-    dataFrame = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-    
+    landTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
   })
    
 })
