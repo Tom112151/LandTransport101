@@ -3,7 +3,7 @@ library(shinydashboard)
 library(leaflet)
 library(jsonlite)
 
-shinyserver(function(input, output)
+shinyServer(function(input, output)
 {
   library(jsonlite)
   
