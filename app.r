@@ -29,7 +29,7 @@ library(shinydashboard)
 ui <- fluidPage( 
   #includeCSS("styles.css"),
   dashboardHeader(title = "Live tracker"),
-  sliderInput("count","Amount",1,8,2),
+  sliderInput("count","Amount",1,1500,100),
   leafletOutput("mymap") 
 )
 
