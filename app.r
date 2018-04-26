@@ -43,24 +43,28 @@ server <- function(input, output, session)
   #jsLandTransport will read from a json in a website and then landTransport will take jsLandTransport's information and put it into
   #a data frame, the website json that is used for this is written below (The parameter for the website cannot be changed unless you
   #make adjustment to the code)
-  jsLandTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-  landTransport <- as.data.frame(jsLandTransport)
+  jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
+  dataFrame <- as.data.frame(jsLandTransport)
+  
+  #We will only need some of the data from the frame, so we put that in  a new frame
+  newDataFrame <- dataFrame[c(3,4,6,7)]
+  
   
   #Displaying the content of landTransport
   #landTransport
   
   #Yes
-  values <- reactiveValues()
+  #values <- reactiveValues()
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
-   leaflet(data = landTransport[1:input$count,]) %>% addTiles() %>%
+   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longtitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
   
   #Observes the API and make changes
-  observe({
-    invalidateLater(1000, session)
-    landTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
+  #observe({
+    #invalidateLater(1000, session)
+    #landTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
   })
    
 })
