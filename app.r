@@ -43,7 +43,7 @@ ui <- fluidPage
     ),
     dashboardBody
     (
-      fluidrow
+      fluidRow
       (
         box(leafletOutput("map"))
       )
