@@ -62,9 +62,9 @@ server <- function(input, output, session)
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
    leaflet(data = vehicleDataFrame[1:input$count,]) %>% addTiles() %>%
-      addAwesomeMarkers(~items.longitude, ~items.latitude, icon=greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id))
+      addAwesomeMarkers(lng = ~items.longitude, lat = ~items.latitude, icon = greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id))
 	leaflet(data = stopsDataFrame[1:input$count,]) %>% addTiles() %>%
-      addAwesomeMarkers(~items.longitude, ~items.latitude, icon=redMarker, popup = ~as.character(items.route_id), label=~as.character(items.route_id)) 
+      addAwesomeMarkers(lng = ~items.longitude, lat = ~items.latitude, icon = redMarker, popup = ~as.character(items.route_id), label=~as.character(items.route_id)) 
   
   #Observes the API and make changes
   observe({
