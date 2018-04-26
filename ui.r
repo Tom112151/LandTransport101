@@ -22,6 +22,7 @@ shinyUI
     
     dashboardBody
     (
+      leafletOutput("map"),
       tabItems
       (
         tabItem
