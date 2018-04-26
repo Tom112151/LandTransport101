@@ -43,10 +43,15 @@ ui <- fluidPage
     ),
     dashboardBody
     (
-      fluidRow
+      tabItems
       (
-        #box(leafletOutput("map"))
-      )
+        tabItem
+        (
+          tabName = "dashboard",
+          fluidRow
+          (
+              #box(leafletOutput("map"))
+          )
     )
    )
 )
