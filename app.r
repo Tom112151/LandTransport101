@@ -32,7 +32,7 @@ ui <- fluidPage(
   dashboardHeader(title = "Live tracker"),
   dashboardSidebar(),
     sliderInput("count","Amount",1,1500,100),
-  dashboardBody()
+  dashboardBody(),
     leafletOutput("mymap") 
 )
 
