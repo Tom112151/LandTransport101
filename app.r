@@ -64,6 +64,7 @@ server <- function(input, output, session)
   output$mymap <- renderLeaflet({
    leaflet() %>% addTiles() %>%
      addMarkers(lng = newDataFrame$items.longitude, lat = newDataFrame$items.latitude, icon = greenMarker)
+    leaflet() %>% addTiles() %>%
      addMarkers(lng = dataFrame2$items.longitude, lat = dataFrame2$items.latitude, icon = redMarker)
      
 })
