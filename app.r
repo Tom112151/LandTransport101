@@ -54,13 +54,18 @@ server <- function(input, output, session)
   
   #Displaying the content of landTransport
   #landTransport
+  icon.busttop <- makeAwesomeIcon(icon= 'flag', markerColor = 'blue', iconColor = 'black')
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
     leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
-     addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.display_name), label=~as.character(items.id))
+    addAwesomeMarkers(
+    lng=~items.longitude, lat=~items.latitude,
+    label=~as.character(items.id),
+    icon = icon.busstop)
+     
 })
 
 }
