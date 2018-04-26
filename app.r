@@ -55,17 +55,16 @@ server <- function(input, output, session)
   #Displaying the content of landTransport
   #landTransport
   library(leaflet) 
- redMarker <- makeIcon(iconUrl = "http://campiscool.com/wp-content/uploads/2015/01/Map-Marker-Marker-Outside-Chartreuse-icon-1.png", iconWidth = 5,
-  iconHeight = 6)
-  greenMarker <- makeIcon(iconUrl = "https://openclipart.org/download/169048/green.svg", iconWidth = 55,
-  iconHeight = 69)
+ redMarker <- makeIcon(iconUrl = "http://campiscool.com/wp-content/uploads/2015/01/Map-Marker-Marker-Outside-Chartreuse-icon-1.png", iconWidth = 50,
+  iconHeight = 60)
+  greenMarker <- makeIcon(iconUrl = "https://openclipart.org/download/169048/green.svg", iconWidth = 50,
+  iconHeight = 60)
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
-   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
-     addMarkers(~items.longitude, ~items.latitude, icon = greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id))
-    leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
-    addMarkers(~items.longitude, ~items.latitude, icon = redMarker, popup = ~as.character(items.display_name), label=~as.character(items.id))
+   leaflet() %>% addTiles() %>%
+     addMarkers(lng = newDataFrame$items.longitude, lat = newDataFrame$items.latitude, icon = greenMarker, popup = ~as.character(newDataFrame$items.heading), label=~as.character(newDataFrame$items.id))
+     addMarkers(lng = dataFrame2$items.longitude, lat = dataFrame2$items.latitude, icon = redMarker, popup = ~as.character(dataFrame2$items.display_name), label=~as.character(dataFrame2$items.id))
      
 })
 
