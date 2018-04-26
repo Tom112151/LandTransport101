@@ -38,6 +38,12 @@ shinyUI
             title = "hah",
             collapsible = TRUE,
             sliderInput("count", "number", 1, 8, 2)
+          ),
+          box
+          (
+            title = "Heh",
+            collapsible = TRUE,
+            leafletOutput("plot")
           )
         )
       )
