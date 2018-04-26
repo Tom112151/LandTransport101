@@ -34,7 +34,7 @@ shinyUI
             width = "100%",
             height = "100%",
             leafletOutput("map"),
-          )
+          ),
           box
           (
             title = "hah",
