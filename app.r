@@ -29,11 +29,21 @@ library(shinydashboard)
 ui <- fluidPage( 
   #includeCSS("styles.css"),
   dashboardPage(
-  dashboardHeader(title = "Live tracker"),
-  dashboardSidebar(),
-    sliderInput("count","Amount",1,1500,100),
-  dashboardBody(),
-    leafletOutput("mymap") 
+    dashboardHeader(title = "Live tracker"),
+    dashboardSidebar(
+      menuItem("Map"),
+        menuSubItem("Bus"),
+        menuSubItem("Stops"),
+      menuItem("menu1"),
+      menuItem("Raw data")
+    ),
+    dashboardBody(
+      fluidrow(
+        box(plotOutput("map")),
+        box(sliderInput("count", "Amount", 1, 1500, 100)),
+        box(leafletOutput("map")
+      )
+    )
 )
 
 #Server---------------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +66,7 @@ server <- function(input, output, session)
   #landTransport
   
   #This will make the map display showing the locations and details on each tracked land transports
-  output$mymap <- renderLeaflet({
+  output$map <- renderLeaflet({
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
 })
