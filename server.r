@@ -14,7 +14,7 @@ shinyServer(function(input, output)
   output$map <- renderLeaflet
   ({
       leaflet(data = newDataFrame[1:input$count,]) 
-      leaflet(quakes) %>% addTiles() %>%
+      leaflet() %>% addTiles() %>%
       fitBounds(~min(items.longitude), ~min(items.latitude))
   })
   
