@@ -15,7 +15,7 @@ shinyServer(function(input, output)
   ({
       leaflet(data = newDataFrame[1:input$count,]) 
       leaflet() %>% addTiles() %>%
-      fitBounds(~min(items.longitude), ~min(items.latitude))
+      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label =~as.character(items.id)) 
   })
   
 })
