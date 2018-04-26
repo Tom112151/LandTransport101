@@ -5,4 +5,4 @@ How:
 
 copy and paste this to your R console
 
-shiny::runGitHub("Andreas001/Land-transport-tracker")
+shiny::runGitHub("Tom112151/LandTransport101")
