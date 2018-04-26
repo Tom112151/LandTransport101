@@ -34,7 +34,12 @@ shinyUI
             width = "100%",
             height = "100%",
             leafletOutput("map"),
-            sliderInput("count", "numbah", 1, 8, 2)
+          )
+          box
+          (
+            title = "hah",
+            collapsible = TRUE,
+            sliderInput("count", "number", 1, 8, 2)
           )
         )
       )
