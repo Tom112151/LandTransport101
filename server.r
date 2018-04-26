@@ -14,8 +14,16 @@ shinyServer(function(input, output)
   output$map <- renderLeaflet
   ({
       leaflet(data = newDataFrame[1:input$count,]) 
-      leaflet() %>% addTiles(urlTemplate = "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png") %>%
-      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label =~as.character(items.id)) 
+      leaflet() %>% addTiles() %>%
+      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label =~as.character(items.id)) %>%
+      points(items.longitude, items.latitude, col = "red", cex = .6)
+    
+  })
+  
+  output$plot <- renderPlot
+  ({
+      leaflet() %>% addTiles() %>%
+      newDataFrame(items.heading$items.id)
   })
   
 })
