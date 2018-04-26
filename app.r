@@ -45,7 +45,7 @@ ui <- fluidPage
     (
       fluidRow
       (
-        box(leafletOutput("map"))
+        #box(leafletOutput("map"))
       )
     )
    )
@@ -70,10 +70,10 @@ server <- function(input, output)
   #landTransport
   
   #This will make the map display showing the locations and details on each tracked land transports
-  output$map <- renderLeaflet({
-   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
-     addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id)) 
-  })
+  #output$map <- renderLeaflet({
+   #leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
+     #addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id)) 
+  #})
 
 }
 shinyApp(ui, server)
