@@ -45,10 +45,8 @@ server <- function(input, output, session)
   #make adjustment to the code)
    jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
   dataFrame <- as.data.frame(jsonFile)
- 
+  newDataFrame <- dataFrame[c(3,4,6,7)]
 	
-  jsonFile2 = fromJSON("http://api.metro.net/agencies/lametro/routes/704/stops/")
-  dataFrame2 <- as.data.frame(jsonFile2)
   
   
   redMarker <- makeIcon(iconUrl = "https://www.iconsdb.com/icons/download/red/map-marker-2-16.png")
@@ -61,16 +59,14 @@ server <- function(input, output, session)
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
-   leaflet() %>% addTiles() %>%
-      addMarkers(lng = dataFrame$items.longitude, lat = dataFrame$items.latitude, icon = greenMarker, popup = ~as.character(dataFrame$items.heading), label=~as.character(dataFrame$items.id))
-	leaflet() %>% addTiles() %>%
-      addMarkers(lng = dataFrame2$items.longitude, lat = dataFrame2$items.latitude, icon = redMarker, popup = ~as.character(dataFrame2$items.route_id), label=~as.character(dataFrame2$items.route_id)) 
+   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
+      addMarkers(~items.longitude, ~items.latitude, icon=greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id)) 
   
   #Observes the API and make changes
   observe({
     invalidateLater(1000, session)
     dataFrame = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-    dataFrame2 = fromJSON("http://api.metro.net/agencies/lametro/routes/704/stops/")
+    
   })
    
 })
