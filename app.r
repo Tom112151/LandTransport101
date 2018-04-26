@@ -61,6 +61,8 @@ server <- function(input, output, session)
   observe({
     invalidateLater(1000, session)
     jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
+    dataFrame <- as.data.frame(jsonFile)
+    
     newDataFrame <- dataFrame[c(3,4,6,7)]
   })
    
