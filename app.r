@@ -46,6 +46,9 @@ server <- function(input, output, session)
   jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
   dataFrame <- as.data.frame(jsonFile)
   
+  jsonFile2 = fromJSON("http://api.metro.net/agencies/lametro/routes/704/stops/")
+  dataFrame2 <- as.data.frame(jsonFile2)
+  
   #We will only need some of the data from the frame, so we put that in  a new frame
   newDataFrame <- dataFrame[c(3,4,6,7)]
   
@@ -56,6 +59,8 @@ server <- function(input, output, session)
   output$mymap <- renderLeaflet({
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
+    leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
+     addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.route_id), label=~as.character(items.route_id))
 })
 
 }
