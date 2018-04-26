@@ -27,11 +27,15 @@ shinyUI
         tabItem
         (
           tabName = "map",
-          fluidRow
+          box
           (
-            box(sliderInput("count", "numbah", 1, 8, 2)),
-            box(leafletOutput("map", width = "100%", height = "1000px"))
-          )
+            title = "Heh",
+            collapsible = TRUE,
+            width = 100%,
+            height 100%,
+            leafletOuput("map"),
+            sliderInput("count", "numbah", 1, 8, 2)
+          ),
         )
       )
     )
