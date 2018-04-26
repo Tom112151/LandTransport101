@@ -1,5 +1,6 @@
 library(shiny)
 library(shinydashboard)
+library(leaflet)
 
 shinyUI
 (
@@ -21,9 +22,12 @@ shinyUI
     
     dashboardBody
     (
-      fluidRow
+      tabItems
       (
-      
+        fluidRow
+        (
+          box(leafletOutput("map"))
+        )
       )
     )
   )
