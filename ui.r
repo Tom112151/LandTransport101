@@ -33,7 +33,7 @@ shinyUI
             collapsible = TRUE,
             width = "100%",
             height = "100%",
-            leafletOuput("map"),
+            leafletOuTput("map"),
             sliderInput("count", "numbah", 1, 8, 2)
           )
         )
