@@ -13,7 +13,8 @@ shinyServer(function(input, output)
   
   output$map <- renderLeaflet
   ({
-      leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
+      leaflet(data = newDataFrame[1:input$count,]) 
+      leaflet() %>% addTiles() %>% setView(42, 16, 4)
       addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id)) 
   })
   
