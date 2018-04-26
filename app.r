@@ -47,7 +47,6 @@ ui <- fluidPage(
 )
 
 #Server---------------------------------------------------------------------------------------------------------------------------------
-#
 server <- function(input, output) 
 {
   #jsonlite loaded again to make sure
@@ -68,8 +67,8 @@ server <- function(input, output)
   #This will make the map display showing the locations and details on each tracked land transports
   output$map <- renderLeaflet({
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
-     addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
-})
+     addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id)) 
+  })
 
 }
 shinyApp(ui, server)
