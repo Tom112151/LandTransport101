@@ -22,8 +22,7 @@ shinyServer(function(input, output)
   
   output$plot <- renderPlot
   ({
-      leaflet() %>% addTiles() %>%
-      newDataFrame(items.heading$items.id)
+      newDataFrame(items.heading$items.id, breaks = input$count)
   })
   
 })
