@@ -29,7 +29,8 @@ shinyUI
           tabName = "Da other wei",
           fluidRow
           (
-            box(leafletOutput("map"))
+            box(leafletOutput("map")),
+            box(sliderInput("count", "numbah", 1, 8, 2))
           )
         )
       )
