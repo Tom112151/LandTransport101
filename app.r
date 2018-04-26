@@ -64,15 +64,10 @@ server <- function(input, output, session)
   output$mymap <- renderLeaflet({
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, icon = greenMarker)
-    #leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
-     #addMarkers(~items.longitude, ~items.latitude, icon = redMarker)
-     
-})
-  output$mymap <- renderLeaflet({
-
-    leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
+    leaflet(data2 = dataFrame2[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, icon = redMarker)
      
 })
+
 }
 shinyApp(ui, server)
