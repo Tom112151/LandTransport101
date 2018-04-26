@@ -29,7 +29,7 @@ shinyUI
           tabName = "map",
           fluidRow
           (
-            box(leafletOutput("map")),
+            box(leafletOutput("map", width = "100%", height = "1000px")),
             box(sliderInput("count", "numbah", 1, 8, 2))
           )
         )
