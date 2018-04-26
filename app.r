@@ -49,12 +49,8 @@ server <- function(input, output, session)
   #We will only need some of the data from the frame, so we put that in  a new frame
   newDataFrame <- dataFrame[c(3,4,6,7)]
   
-  
   #Displaying the content of landTransport
   #landTransport
-  
-  #Yes
-  #values <- reactiveValues()
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
@@ -62,10 +58,11 @@ server <- function(input, output, session)
      addMarkers(~items.longitude, ~items.latitude, popup = ~as.character(items.heading), label=~as.character(items.id))
   
   #Observes the API and make changes
-  #observe({
-    #invalidateLater(1000, session)
-    #landTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-  #})
+  observe({
+    invalidateLater(1000, session)
+    jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
+    newDataFrame <- dataFrame[c(3,4,6,7)]
+  })
    
 })
 
