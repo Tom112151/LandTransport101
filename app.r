@@ -65,10 +65,7 @@ server <- function(input, output, session)
    leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
      addMarkers(~items.longitude, ~items.latitude, icon = greenMarker, popup = ~as.character(items.heading), label=~as.character(items.id))
     leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
-    addAwesomeMarkers(
-    lng=~items.longitude, lat=~items.latitude,
-    label=~as.character(items.id),
-    icon = redMarker)
+    addMarkers(~items.longitude, ~items.latitude, icon = redMarker, popup = ~as.character(items.display_name), label=~as.character(items.id))
      
 })
 
