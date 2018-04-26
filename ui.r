@@ -32,10 +32,10 @@ shinyUI
             title = "Heh",
             collapsible = TRUE,
             width = 100%,
-            height 100%,
+            height = 100%,
             leafletOuput("map"),
             sliderInput("count", "numbah", 1, 8, 2)
-          ),
+          )
         )
       )
     )
