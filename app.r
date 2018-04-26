@@ -55,9 +55,9 @@ server <- function(input, output, session)
   #Displaying the content of landTransport
   #landTransport
   library(leaflet) 
- redMarker <- makeIcon(iconUrl = "https://www.iconsdb.com/icons/download/red/map-marker-2-16.png", iconWidth = 5,
+ redMarker <- makeIcon(iconUrl = "http://campiscool.com/wp-content/uploads/2015/01/Map-Marker-Marker-Outside-Chartreuse-icon-1.png", iconWidth = 5,
   iconHeight = 6)
-  greenMarker <- makeIcon(iconUrl = "http://campiscool.com/wp-content/uploads/2015/01/Map-Marker-Marker-Outside-Chartreuse-icon-1.png", iconWidth = 55,
+  greenMarker <- makeIcon(iconUrl = "https://openclipart.org/download/169048/green.svg", iconWidth = 55,
   iconHeight = 69)
   
   #This will make the map display showing the locations and details on each tracked land transports
