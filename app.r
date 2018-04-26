@@ -26,11 +26,14 @@ library(shinydashboard)
 #sliderInput is how much tracked items do you want to see (The 3 number parameters by order is minimum,maximum,default)
 #Leaflet creates the map
 
-ui <- fluidPage( 
+ui <- fluidPage
+( 
   #includeCSS("styles.css"),
-  dashboardPage(
+  dashboardPage
+  (
     dashboardHeader(title = "Live tracker"),
-    dashboardSidebar(
+    dashboardSidebar
+    (
       sliderInput("count", "Amount", 1, 1500, 100),
       menuItem("Map"),
         menuSubItem("Bus"),
@@ -38,11 +41,14 @@ ui <- fluidPage(
       menuItem("menu1"),
       menuItem("Raw data")
     ),
-    dashboardBody(
-      fluidrow(
+    dashboardBody
+    (
+      fluidrow
+      (
         box(leafletOutput("map"))
       )
     )
+   )
 )
 
 #Server---------------------------------------------------------------------------------------------------------------------------------
