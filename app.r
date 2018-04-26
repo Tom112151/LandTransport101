@@ -65,7 +65,7 @@ server <- function(input, output, session)
   #observe({
     #invalidateLater(1000, session)
     #landTransport = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
-  })
+  #})
    
 })
 
