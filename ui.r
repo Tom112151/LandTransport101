@@ -13,9 +13,8 @@ shinyUI
     
     dashboardSidebar
     (
-      sliderInput("count", "BAKA", 1, 10, 2),
       menuItem("Dashboard"),
-        menuSubItem("sub board"),
+        menuSubItem("sub board", tabName = "map"),
       menuItem("new 1"),
       menuItem("new 2")
     ),
@@ -27,10 +26,10 @@ shinyUI
       (
         tabItem
         (
-          tabName = "Da other wei",
+          tabName = "map",
           fluidRow
           (
-            #box(leafletOutput("map")),
+            box(leafletOutput("map")),
             box(sliderInput("count", "numbah", 1, 8, 2))
           )
         )
