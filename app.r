@@ -54,7 +54,8 @@ server <- function(input, output, session)
   
   #Displaying the content of landTransport
   #landTransport
-  icon.busttop <- makeAwesomeIcon(icon= 'flag', markerColor = 'blue', iconColor = 'black')
+  library(leaflet) 
+  icon.busttop <- makeIcon(iconUrl = "https://www.iconsdb.com/icons/download/red/map-marker-2-16.png")
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
