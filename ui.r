@@ -24,9 +24,13 @@ shinyUI
     (
       tabItems
       (
-        fluidRow
+        tabItem
         (
-          box(leafletOutput("map"))
+          tabName = "Da other wei",
+          fluidRow
+          (
+            box(leafletOuput("map"))
+          )
         )
       )
     )
