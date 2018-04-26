@@ -34,6 +34,5 @@ jsonFile = fromJSON("http://api.metro.net/agencies/lametro/vehicles/")
 	    leaflet(data = stopsDataFrame[1:input$count,]) %>% addTiles() %>%
       addAwesomeMarkers(~items.longitude, ~items.latitude, icon=redMarker, popup = ~as.character(items.route_id), label=~as.character(items.route_id)) 
   })
-}) 
 }
 shinyApp(ui, server)
