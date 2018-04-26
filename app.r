@@ -68,6 +68,11 @@ server <- function(input, output, session)
      #addMarkers(~items.longitude, ~items.latitude, icon = redMarker)
      
 })
+  output$mymap <- renderLeaflet({
 
+    leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
+     addMarkers(~items.longitude, ~items.latitude, icon = redMarker)
+     
+})
 }
 shinyApp(ui, server)
