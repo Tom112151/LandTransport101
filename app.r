@@ -31,6 +31,7 @@ ui <- fluidPage(
   dashboardPage(
     dashboardHeader(title = "Live tracker"),
     dashboardSidebar(
+      sliderInput("count", "Amount", 1, 1500, 100),
       menuItem("Map"),
         menuSubItem("Bus"),
         menuSubItem("Stops"),
@@ -39,8 +40,6 @@ ui <- fluidPage(
     ),
     dashboardBody(
       fluidrow(
-        box(plotOutput("map")),
-        box(sliderInput("count", "Amount", 1, 1500, 100)),
         box(leafletOutput("map"))
       )
     )
