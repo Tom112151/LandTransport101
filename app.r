@@ -62,10 +62,10 @@ server <- function(input, output, session)
   
   #This will make the map display showing the locations and details on each tracked land transports
   output$mymap <- renderLeaflet({
-   leaflet() %>% addTiles() %>%
-     addMarkers(mymap, lng = newDataFrame$items.longitude, lat = newDataFrame$items.latitude, icon = greenMarker)
-    leaflet() %>% addTiles() %>%
-     addMarkers(mymap, lng = dataFrame2$items.longitude, lat = dataFrame2$items.latitude, icon = redMarker)
+   leaflet(data = newDataFrame[1:input$count,]) %>% addTiles() %>%
+     addMarkers(~items.longitude, ~items.latitude, icon = greenMarker)
+    #leaflet(data = dataFrame2[1:input$count,]) %>% addTiles() %>%
+     #addMarkers(~items.longitude, ~items.latitude, icon = redMarker)
      
 })
 
